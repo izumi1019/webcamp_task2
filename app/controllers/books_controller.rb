@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     else
       @books = Book.all
       render :index
-      @book = Book.new
+      @book = Book.new(book_params)
     end
   end
 
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     if book.destroy
-    redirect_to books_path, notice: "Book was successfully delete."
+    redirect_to books_path, notice: "Book was successfully destroyed."
     end
   end
   
